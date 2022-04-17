@@ -6,7 +6,7 @@ function move(element) {
         element.style.bottom = bottom + 'px'
     }
 
-    function moveWithArrowKeys(left, bottom){
+    function moveWithArrowKeys(left, bottom, callback){
         let direction = null; //direction has to be null? So it can change?
         let x = left; //current position for thing
         let y = bottom;
@@ -55,14 +55,14 @@ function move(element) {
             if(e.key === 'ArrowDown'){
                 direction = 'south'
             }
-
+            callback(direction)
         })
 
         // When no keys are pressed, the thing
         //stays still
         document.addEventListener('keyup', function(e){
             direction = null
-
+            callback(direction)
         })
     }
 
