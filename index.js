@@ -28,9 +28,30 @@ setInterval(function(){
     character.style.bottom = y + 'px'
 }, 1) //calls moveCharacter function every millisecond
 
-// Click arrow keys for movement!
-document.addEventListener('keydown', function(e){
+// When no keys are pressed, the character
+//stays still
+document.addEventListener('keyup', function(e){
+    direction = null
+})
 
+// Click arrow keys for movement! "e" needed for checking
+//which key was pressed. When keys are pressed, character moves.
+document.addEventListener('keydown', function(e){
+    //let user hold down key to keep movement happening
+    if(e.repeat) return;
+
+    if(e.key === 'ArrowLeft'){
+        direction = 'west'
+    }
+    if(e.key === 'ArrowUp'){
+        direction = 'north'
+    }
+    if(e.key === 'ArrowRight'){
+        direction = 'east'
+    }
+    if(e.key === 'ArrowDown'){
+        direction = 'south'
+    }
 })
 
 
